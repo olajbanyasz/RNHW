@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
@@ -8,8 +9,11 @@ const styles = StyleSheet.create({
   },
   headerStyle: {
     color: '#FFF',
-    justifyContent: 'space-around',
     paddingTop: 30,
+  },
+  centerContainerStyle: {
+    position: 'absolute',
+    right: 60,
   },
   inputContainer: {
     backgroundColor: '#FFF',
@@ -37,11 +41,52 @@ const styles = StyleSheet.create({
   },
   cardStyle: {
     flex: 1,
-    borderTopColor: 'white',
+    borderTopColor: '#FFF',
+    borderRadius: 3,
+    marginBottom: 20,
   },
   itemPrice: {
     fontWeight: '900',
     marginTop: 10,
+  },
+  activityIndicator: {
+    paddingTop: 80,
+  },
+  divider: {
+    marginBottom: 10,
+    marginTop: 10,
+  },
+  detailsContainer: {
+    backgroundColor: '#FFF',
+    marginBottom: 140,
+    padding: 20,
+    paddingBottom: 50,
+  },
+  description: {
+    paddingBottom: 30,
+  },
+  touchableOpacityStyle:{
+    position: 'absolute',
+    height: 90,
+    alignItems: 'center',
+    justifyContent: 'center',
+    bottom: 50,
+    width: '100%',
+    padding: 20,
+    paddingTop: 0,
+    backgroundColor: '#FFF',
+  },
+  floatingButtonStyle: {
+    backgroundColor: '#2196f3',
+    color: '#fff',
+    height: 50,
+    margin: 20,
+    marginTop: 0,
+    width: '100%',
+    borderRadius: 3,
+    padding: 15,
+    textAlign: 'center',
+    fontWeight: '900',
   },
 });
 
