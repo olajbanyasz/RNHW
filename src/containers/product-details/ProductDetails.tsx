@@ -6,6 +6,7 @@ import styles from '../../style/stylesheet';
 import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import RenderHtml from 'react-native-render-html';
 import {useWindowDimensions} from 'react-native';
+import Swiper from 'react-native-swiper';
 
 const ProductDetails = ({id = 2}) => {
   const defaultDetails = {
@@ -46,10 +47,32 @@ const ProductDetails = ({id = 2}) => {
         centerContainerStyle={styles.centerContainerStyle}
       />
       <ScrollView style={styles.detailsContainer}>
-        <Image
-          source={require('../../assets/pulli.jpg')}
-          style={{width: 200, height: 200, marginBottom: 20}}
-        />
+        <Swiper style={styles.swiper} showsButtons loop={true}>
+        <View style={styles.swiperImageView}>
+            <Image
+              source={require('../../assets/c1.jpg')}
+              style={styles.swiperImage}
+            />
+          </View>
+          <View style={styles.swiperImageView}>
+            <Image
+              source={require('../../assets/c2.jpg')}
+              style={styles.swiperImage}
+            />
+          </View>
+          <View style={styles.swiperImageView}>
+            <Image
+              source={require('../../assets/c3.jpg')}
+              style={styles.swiperImage}
+            />
+          </View>
+          <View style={styles.swiperImageView}>
+            <Image
+              source={require('../../assets/c4.jpg')}
+              style={styles.swiperImage}
+            />
+          </View>
+        </Swiper>
         <Text style={styles.itemPrice}>{data.attributes.display_price}</Text>
         <Divider orientation="horizontal" style={styles.divider} width={1} />
         <View>

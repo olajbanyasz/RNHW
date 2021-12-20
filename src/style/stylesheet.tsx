@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
     marginBottom: 140,
     padding: 20,
     paddingBottom: 50,
+    paddingTop: 0,
   },
   description: {
     paddingBottom: 30,
@@ -87,6 +88,19 @@ const styles = StyleSheet.create({
     padding: 15,
     textAlign: 'center',
     fontWeight: '900',
+  },
+  swiper: {
+    marginBottom: 10,
+    height: 250,
+  },
+  swiperImageView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  swiperImage: {
+    width: 150,
+    height: 150,
   },
 });
 
