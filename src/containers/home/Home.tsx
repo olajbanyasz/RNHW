@@ -1,11 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect} from 'react';
-import {FlatList, RefreshControl, Text, TextInput, View} from 'react-native';
+import {
+  FlatList,
+  RefreshControl,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Header, Card} from 'react-native-elements';
 import styles from '../../style/stylesheet';
 
-const Home = () => {
+const Home = ({navigation}) => {
   const [data, setData] = useState([]);
   const [refreshing, setRefreshing] = useState(true);
 
@@ -35,11 +42,13 @@ const Home = () => {
 
   const Item = ({item}) => (
     <View style={styles.item}>
-      <Card containerStyle={styles.cardStyle}>
-        <Card.Title>{item.attributes.name}</Card.Title>
-        <Card.Image source={require('../../assets/pulli.jpg')} />
-        <Text style={styles.itemPrice}>{item.attributes.display_price}</Text>
-      </Card>
+      <TouchableOpacity onPress={() => navigation.navigate('Details', {id: item.id})}>
+        <Card containerStyle={styles.cardStyle}>
+          <Card.Title>{item.attributes.name}</Card.Title>
+          <Card.Image source={require('../../assets/pulli.jpg')} />
+          <Text style={styles.itemPrice}>{item.attributes.display_price}</Text>
+        </Card>
+      </TouchableOpacity>
     </View>
   );
 

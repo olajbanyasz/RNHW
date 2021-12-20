@@ -39,9 +39,12 @@ const styles = StyleSheet.create({
   },
   cardStyle: {
     flex: 1,
+    borderWidth: 2,
     borderTopColor: '#FFF',
-    borderRadius: 3,
+    borderBottomLeftRadius: 4,
+    borderBottomRightRadius: 4,
     marginBottom: 20,
+    shadowColor: '#FFF',
   },
   itemPrice: {
     fontWeight: '900',
@@ -56,11 +59,10 @@ const styles = StyleSheet.create({
   },
   detailsContainer: {
     backgroundColor: '#FFF',
-    position: 'relative',
   },
   detailsScrollContainer: {
     backgroundColor: '#FFF',
-    marginBottom: 70,
+    marginBottom: 120,
     padding: 20,
     paddingTop: 0,
   },
@@ -72,14 +74,13 @@ const styles = StyleSheet.create({
     height: 90,
     alignItems: 'center',
     justifyContent: 'center',
-    bottom: 30,
+    bottom: 60,
     width: '100%',
     padding: 20,
-    paddingTop: 0,
     backgroundColor: '#FFF',
   },
   floatingButtonStyle: {
-    backgroundColor: '#2196f3',
+    backgroundColor: '#2196F3',
     color: '#fff',
     height: 50,
     margin: 20,
@@ -102,6 +103,40 @@ const styles = StyleSheet.create({
   swiperImage: {
     width: 150,
     height: 150,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#a4a5a9',
+  },
+  modalView: {
+    backgroundColor: 'white',
+    borderRadius: 4,
+    padding: 20,
+    alignItems: 'center',
+    elevation: 5,
+  },
+  modalButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    backgroundColor: '#FFF',
+  },
+  modalButtonText: {
+    backgroundColor: '#2196F3',
+    color: '#fff',
+    margin: 20,
+    width: 120,
+    borderRadius: 3,
+    padding: 10,
+    textAlign: 'center',
+    fontWeight: '500',
+    fontSize: 20,
+  },
+  modalText: {
+    margin: 10,
+    textAlign: 'center',
   },
 });
 
