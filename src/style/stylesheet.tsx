@@ -7,13 +7,10 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: '700',
   },
-  headerStyle: {
-    color: '#FFF',
-    paddingTop: 30,
-  },
   centerContainerStyle: {
     position: 'absolute',
     right: 60,
+    bottom: 0,
   },
   inputContainer: {
     backgroundColor: '#FFF',
@@ -30,7 +27,7 @@ const styles = StyleSheet.create({
   },
   flatList: {
     backgroundColor: '#FFF',
-    margin: 20,
+    paddingHorizontal: 10,
   },
   mainContainer: {
     backgroundColor: '#FFF',
@@ -38,6 +35,7 @@ const styles = StyleSheet.create({
   item: {
     flex: 1,
     width: 125,
+    marginBottom: 10,
   },
   cardStyle: {
     flex: 1,
@@ -58,9 +56,12 @@ const styles = StyleSheet.create({
   },
   detailsContainer: {
     backgroundColor: '#FFF',
-    marginBottom: 140,
+    position: 'relative',
+  },
+  detailsScrollContainer: {
+    backgroundColor: '#FFF',
+    marginBottom: 70,
     padding: 20,
-    paddingBottom: 50,
     paddingTop: 0,
   },
   description: {
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
     height: 90,
     alignItems: 'center',
     justifyContent: 'center',
-    bottom: 50,
+    bottom: 30,
     width: '100%',
     padding: 20,
     paddingTop: 0,

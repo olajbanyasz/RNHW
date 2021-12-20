@@ -38,15 +38,14 @@ const ProductDetails = ({id = 2}) => {
   const {width} = useWindowDimensions();
 
   return (
-    <>
+    <View style={styles.detailsContainer}>
       <Header
         leftComponent={<Icon name="arrow-back" size={30} color="#fff" />}
         centerComponent={<Icon name="heart-outline" size={30} color="#fff" />}
         rightComponent={<Icon name="cart" size={30} color="#fff" />}
-        containerStyle={styles.headerStyle}
         centerContainerStyle={styles.centerContainerStyle}
       />
-      <ScrollView style={styles.detailsContainer}>
+      <ScrollView style={styles.detailsScrollContainer}>
         <Swiper style={styles.swiper} showsButtons loop={true}>
           <View style={styles.swiperImageView}>
             <Image
@@ -98,7 +97,7 @@ const ProductDetails = ({id = 2}) => {
         style={styles.touchableOpacityStyle}>
         <Text style={styles.floatingButtonStyle}>ADD TO CART</Text>
       </TouchableOpacity>
-    </>
+    </View>
   );
 };
 
