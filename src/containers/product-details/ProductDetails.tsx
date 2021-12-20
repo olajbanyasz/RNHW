@@ -48,7 +48,7 @@ const ProductDetails = ({id = 2}) => {
       />
       <ScrollView style={styles.detailsContainer}>
         <Swiper style={styles.swiper} showsButtons loop={true}>
-        <View style={styles.swiperImageView}>
+          <View style={styles.swiperImageView}>
             <Image
               source={require('../../assets/c1.jpg')}
               style={styles.swiperImage}
@@ -76,7 +76,7 @@ const ProductDetails = ({id = 2}) => {
         <Text style={styles.itemPrice}>{data.attributes.display_price}</Text>
         <Divider orientation="horizontal" style={styles.divider} width={1} />
         <View>
-          <Text style={{fontWeight: '900', fontSize: 24}}>Select Color</Text>
+          <Text style={{fontWeight: '700', fontSize: 20}}>Select Color</Text>
           <ButtonGroup
             onPress={setSelectedColor}
             selectedIndex={selectedColor}
@@ -86,7 +86,7 @@ const ProductDetails = ({id = 2}) => {
         </View>
         <Divider orientation="horizontal" style={styles.divider} width={1} />
         <View style={styles.description}>
-          <Text style={{fontWeight: '900', fontSize: 24}}>Description</Text>
+          <Text style={{fontWeight: '700', fontSize: 20}}>Description</Text>
           <RenderHtml
             source={{html: data.attributes.description}}
             contentWidth={width}
