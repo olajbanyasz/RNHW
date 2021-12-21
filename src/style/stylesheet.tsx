@@ -116,6 +116,7 @@ const styles = StyleSheet.create({
     padding: 20,
     alignItems: 'center',
     elevation: 5,
+    width: '85%',
   },
   modalButton: {
     alignItems: 'center',

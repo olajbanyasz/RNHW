@@ -20,7 +20,7 @@ const ProductDetails = ({route, navigation}) => {
   };
 
   const [data, setData] = useState(defaultDetails);
-  const [selectedColor, setSelectedColor] = useState(0);
+  const [selectedColor, setSelectedColor] = useState(null);
 
   const getItemDetails = async (itemId: String) => {
     try {
@@ -37,6 +37,8 @@ const ProductDetails = ({route, navigation}) => {
   useEffect(() => {
     getItemDetails(id);
   }, [id]);
+
+  const isColorSelected = selectedColor === null ? false : true;
 
   const {width} = useWindowDimensions();
 
@@ -95,7 +97,7 @@ const ProductDetails = ({route, navigation}) => {
           />
         </View>
       </ScrollView>
-      <CartModal />
+      <CartModal isColorSelected={isColorSelected}/>
     </View>
   );
 };

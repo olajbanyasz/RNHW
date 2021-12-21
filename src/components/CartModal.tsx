@@ -4,7 +4,7 @@ import {Text, TouchableOpacity, View, Modal, Alert} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../style/stylesheet';
 
-function CartModal() {
+function CartModal({isColorSelected}) {
   const [isModalVisible, setModalVisible] = useState(false);
 
   const toggleModal = () => {
@@ -30,11 +30,33 @@ function CartModal() {
         }}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Icon name="checkmark-circle-outline" size={60} color="#a5dc86" />
+            {isColorSelected ? (
+              <Icon name="checkmark-circle-outline" size={60} color="#a5dc86" />
+            ) : (
+              <Icon name="close-circle-outline" size={60} color="#dd6b55" />
+            )}
             <Text
               style={{fontWeight: '700', fontSize: 20, ...styles.modalText}}>
-              Product added to your cart
+              {isColorSelected ? 'Product added to your cart' : 'Select color'}
             </Text>
+            {!isColorSelected && (
+              <>
+                <Text
+                  style={{
+                    fontWeight: '500',
+                    fontSize: 14,
+                  }}>
+                  Please select your color to
+                </Text>
+                <Text
+                  style={{
+                    fontWeight: '500',
+                    fontSize: 14,
+                  }}>
+                  add this item in your cart
+                </Text>
+              </>
+            )}
             <TouchableOpacity
               onPress={toggleModal}
               activeOpacity={0.3}
