@@ -5,6 +5,8 @@ const AppContext = React.createContext({
   updateCart: item => {
     cart.push(item);
   },
+  isUser: false,
+  setUser: (isUser) => {isUser = isUser},
 });
 
 export default AppContext;

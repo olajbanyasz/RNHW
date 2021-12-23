@@ -163,6 +163,31 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
     height: '100%',
   },
+  loginButtons: {
+    backgroundColor: '#2196F3',
+    borderRadius: 3,
+    padding: 10,
+    width: '35%',
+    height: 40,
+    textAlign: 'center',
+    alignItems: 'center',
+    margin: 20,
+  },
+  loginButtonsContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 20,
+    marginTop: 40,
+  },
+  loginButtonText: {
+    backgroundColor: '#2196F3',
+    color: '#fff',
+    textAlign: 'center',
+    fontWeight: '500',
+    fontSize: 14,
+  },
 });
 
 export default styles;

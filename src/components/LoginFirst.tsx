@@ -18,7 +18,7 @@ const LoginFirst = ({navigation}) => {
             fontSize: 14,
             ...styles.centeredText,
           }}>
-          Login first to view yout cart
+          Login first to view your cart
         </Text>
         <TouchableOpacity
           onPress={() => navigation.goBack()}
