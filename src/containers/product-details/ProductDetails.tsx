@@ -97,7 +97,7 @@ const ProductDetails = ({route, navigation}) => {
           />
         </View>
       </ScrollView>
-      <CartModal isColorSelected={isColorSelected}/>
+      <CartModal isColorSelected={isColorSelected} item={data}/>
     </View>
   );
 };

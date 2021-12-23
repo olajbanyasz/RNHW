@@ -1,12 +1,9 @@
 import React from 'react';
 import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import Home from '../home/Home';
-import ProductDetails from '../product-details/ProductDetails';
 import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-
-const Stack = createNativeStackNavigator();
+import DrawerNavigator from '../../components/DrawerNavigator';
+import AppContextProvider from '../../components/AppContextProvider';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -17,19 +14,14 @@ const App = () => {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="Home"
-          screenOptions={{
-            headerShown: false,
-          }}>
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Details" component={ProductDetails} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </SafeAreaView>
+    <AppContextProvider>
+      <SafeAreaView style={backgroundStyle}>
+        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+        <NavigationContainer>
+          <DrawerNavigator />
+        </NavigationContainer>
+      </SafeAreaView>
+    </AppContextProvider>
   );
 };
 

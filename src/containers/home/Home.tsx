@@ -1,16 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect} from 'react';
-import {
-  FlatList,
-  RefreshControl,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {FlatList, RefreshControl, Text, TextInput, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {Header, Card} from 'react-native-elements';
+import {Header} from 'react-native-elements';
 import styles from '../../style/stylesheet';
+import ItemCard from '../../components/ItemCard';
 
 const Home = ({navigation}) => {
   const [data, setData] = useState([]);
@@ -24,7 +18,7 @@ const Home = ({navigation}) => {
     setRefreshing(true);
     try {
       const response = await fetch(
-        'https://demo.spreecommerce.org/api/v2/storefront/products',
+        'https://rn-mentoring.herokuapp.com/api/v2/storefront/products',
       );
       const json = await response.json();
       setData(json.data.slice(0, 22));
@@ -40,24 +34,21 @@ const Home = ({navigation}) => {
     getItems();
   }, []);
 
-  const Item = ({item}) => (
-    <View style={styles.item}>
-      <TouchableOpacity onPress={() => navigation.navigate('Details', {id: item.id})}>
-        <Card containerStyle={styles.cardStyle}>
-          <Card.Title>{item.attributes.name}</Card.Title>
-          <Card.Image source={require('../../assets/pulli.jpg')} />
-          <Text style={styles.itemPrice}>{item.attributes.display_price}</Text>
-        </Card>
-      </TouchableOpacity>
-    </View>
+  const renderItem = ({item}) => (
+    <ItemCard item={item} navigation={navigation} />
   );
-
-  const renderItem = ({item}) => <Item item={item} />;
 
   return (
     <View>
       <Header
-        leftComponent={<Icon name="menu" size={30} color="#fff" />}
+        leftComponent={
+          <Icon
+            name="menu"
+            size={30}
+            color="#fff"
+            onPress={() => navigation.toggleDrawer()}
+          />
+        }
         centerComponent={<Text style={styles.headerText}>Ecommerce Store</Text>}
         rightComponent={<Icon name="cart" size={30} color="#fff" />}
       />

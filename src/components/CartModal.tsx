@@ -1,14 +1,24 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {Text, TouchableOpacity, View, Modal, Alert} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../style/stylesheet';
+import AppContext from './AppContext';
 
-function CartModal({isColorSelected}) {
+function CartModal({isColorSelected, item}) {
   const [isModalVisible, setModalVisible] = useState(false);
+  const {cart, updateCart} = useContext(AppContext);
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
+  };
+
+  const addTocart = () => {
+    if (isColorSelected) {
+      const newCart = [...cart, item];
+      updateCart(newCart);
+    }
+    toggleModal();
   };
 
   return (
@@ -58,7 +68,7 @@ function CartModal({isColorSelected}) {
               </>
             )}
             <TouchableOpacity
-              onPress={toggleModal}
+              onPress={addTocart}
               activeOpacity={0.3}
               style={styles.modalButton}>
               <Text style={styles.modalButtonText}>OK</Text>

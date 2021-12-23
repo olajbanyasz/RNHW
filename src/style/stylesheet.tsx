@@ -139,6 +139,30 @@ const styles = StyleSheet.create({
     margin: 10,
     textAlign: 'center',
   },
+  centeredText: {
+    textAlign: 'center',
+  },
+  cartButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    backgroundColor: '#FFF',
+  },
+  cartButtonText: {
+    backgroundColor: '#2196F3',
+    color: '#fff',
+    margin: 20,
+    width: '100%',
+    borderRadius: 3,
+    padding: 10,
+    textAlign: 'center',
+    fontWeight: '500',
+    fontSize: 20,
+  },
+  cartContainer: {
+    backgroundColor: '#FFF',
+    height: '100%',
+  },
 });
 
 export default styles;
