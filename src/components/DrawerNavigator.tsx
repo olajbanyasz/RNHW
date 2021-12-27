@@ -11,8 +11,8 @@ function DrawerNavigator() {
       screenOptions={{
         headerShown: false,
       }}>
-      <Drawer.Screen name="Home" component={HomeStackNavigator} />
-      <Drawer.Screen name="Cart" component={CartStackNavigator} />
+      <Drawer.Screen name="HomePage" component={HomeStackNavigator} />
+      <Drawer.Screen name="CartPage" component={CartStackNavigator} />
     </Drawer.Navigator>
   );
 }
