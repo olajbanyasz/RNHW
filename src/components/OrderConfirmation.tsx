@@ -1,10 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useContext} from 'react';
 import {Text, View, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../style/stylesheet';
+import AppContext from './AppContext';
 
 const OrderConfirmation = ({navigation}) => {
+  const {updateCart} = useContext(AppContext);
   return (
     <View style={{backgroundColor: '#FFF', marginTop: '10%'}}>
       <View style={{padding: 20, alignItems: 'center'}}>
@@ -38,7 +40,10 @@ const OrderConfirmation = ({navigation}) => {
           information please contact our customer support.
         </Text>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Home')}
+          onPress={() => {
+            navigation.navigate('Home');
+            updateCart([]);
+          }}
           activeOpacity={0.3}
           style={styles.cartButton}>
           <Text style={styles.cartButtonText}>CONTINUE SHOPPING</Text>

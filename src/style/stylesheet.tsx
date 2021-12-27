@@ -37,6 +37,11 @@ const styles = StyleSheet.create({
     width: 125,
     marginBottom: 10,
   },
+  cartItem: {
+    flex: 1,
+    marginBottom: 10,
+    paddingHorizontal: 10,
+  },
   cardStyle: {
     flex: 1,
     borderWidth: 2,
@@ -187,6 +192,43 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: '500',
     fontSize: 14,
+  },
+  cartCardContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    marginTop: 20,
+    justifyContent: 'flex-start',
+    padding: 20,
+    borderColor: 'lightgray',
+    borderBottomRightRadius: 5,
+    borderBottomLeftRadius: 5,
+    borderTopColor: '#FFF',
+    borderWidth: 2,
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  cartImageStyle: {
+    height: 100,
+    width: 100,
+  },
+  cartItemTextContainer: {
+    marginLeft: 20,
+    paddingTop: 15,
+  },
+  proceedButtonContainer: {
+    paddingHorizontal: 20,
+  },
+  priceCardContainer: {
+    marginTop: 20,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderColor: 'lightgray',
+    borderBottomRightRadius: 5,
+    borderBottomLeftRadius: 5,
+    borderTopColor: '#FFF',
+    borderWidth: 2,
+    marginLeft: 20,
+    marginRight: 20,
   },
 });
 

@@ -50,7 +50,14 @@ const Home = ({navigation}) => {
           />
         }
         centerComponent={<Text style={styles.headerText}>Ecommerce Store</Text>}
-        rightComponent={<Icon name="cart" size={30} color="#fff" />}
+        rightComponent={
+          <Icon
+            name="cart"
+            size={30}
+            color="#fff"
+            onPress={() => navigation.navigate('Cart')}
+          />
+        }
       />
       <View style={styles.inputContainer}>
         <TextInput
