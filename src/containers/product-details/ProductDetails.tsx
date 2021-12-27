@@ -47,7 +47,7 @@ const ProductDetails = ({route, navigation}) => {
       <Header
         leftComponent={<Icon name="arrow-back" size={30} color="#fff" onPress={() => navigation.goBack()} />}
         centerComponent={<Icon name="heart-outline" size={30} color="#fff" />}
-        rightComponent={<Icon name="cart" size={30} color="#fff" />}
+        rightComponent={<Icon name="cart" size={30} color="#fff" onPress={() => navigation.navigate('Cart')}/>}
         centerContainerStyle={styles.centerContainerStyle}
       />
       <ScrollView style={styles.detailsScrollContainer}>
