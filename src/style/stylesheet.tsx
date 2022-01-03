@@ -194,10 +194,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   cartCardContainer: {
-    flex: 1,
-    flexDirection: 'row',
     marginTop: 20,
-    justifyContent: 'flex-start',
     padding: 20,
     borderColor: 'lightgray',
     borderBottomRightRadius: 5,
@@ -206,6 +203,28 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     marginLeft: 10,
     marginRight: 10,
+  },
+  cartItemDetailsContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+  },
+  cartItemCounterContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    marginTop: 20,
+    justifyContent: 'flex-end',
+  },
+  itemCounterContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  trashIconContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    marginTop: 13,
+    justifyContent: 'flex-end',
   },
   cartImageStyle: {
     height: 100,
