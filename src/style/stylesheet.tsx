@@ -1,5 +1,9 @@
 /* eslint-disable prettier/prettier */
 import {StyleSheet} from 'react-native';
+import {Dimensions} from 'react-native';
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   headerText: {
@@ -34,7 +38,6 @@ const styles = StyleSheet.create({
   },
   item: {
     flex: 1,
-    width: 125,
     marginBottom: 10,
   },
   cartItem: {
@@ -227,8 +230,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   cartImageStyle: {
-    height: 100,
-    width: 100,
+    height: windowWidth * 0.25,
+    width: windowWidth * 0.25,
   },
   cartItemTextContainer: {
     marginLeft: 20,
