@@ -5,7 +5,6 @@ import {Header} from 'react-native-elements';
 import styles from '../../style/stylesheet';
 import EmptyCart from '../../components/EmptyCart';
 import LoginFirst from '../../components/LoginFirst';
-import OrderConfirmation from '../../components/OrderConfirmation';
 import {Text, View} from 'react-native';
 import AppContext from '../../components/AppContext';
 import CartContent from '../../components/CartContent';

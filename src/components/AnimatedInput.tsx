@@ -8,20 +8,16 @@ const AnimatedInput = ({
   defaultValue,
   onChangeText,
   keyboardType,
-  editable,
-  placeholder
+  editable
 }) => {
-  let placeholderString;
   const labelAnimation = useRef(new Animated.Value(0)).current;
   const onFocus = e => {
-    placeholderString = placeholder;
     Animated.spring(labelAnimation, {
       toValue: 1,
       useNativeDriver: false,
     }).start();
   };
   const onBlur = () => {
-    placeholderString = placeholder;
     Animated.spring(labelAnimation, {
       toValue: 0,
       useNativeDriver: false,
@@ -31,6 +27,7 @@ const AnimatedInput = ({
   return (
     <View style={styles.inputContainer}>
       <Animated.Text
+        onPress={onFocus}
         style={[
           styles.inputLabel,
           {
@@ -56,7 +53,6 @@ const AnimatedInput = ({
           editable={editable}
           onFocus={onFocus}
           onBlur={onBlur}
-          placeholder={placeholderString}
         />
       </Animated.View>
     </View>
