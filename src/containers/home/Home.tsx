@@ -66,7 +66,7 @@ const Home = ({navigation}) => {
         onChangeText={() => {}}
         keyboardType={'default'}
         editable={true}
-        placeholder={'eg: black sweatshirt'}
+        bordered={true}
       />
       <View style={styles.mainContainer}>
         <FlatList

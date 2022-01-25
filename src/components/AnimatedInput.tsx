@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import {TextInput, View, Animated} from 'react-native';
 import styles from '../style/stylesheet';
 
@@ -8,24 +8,28 @@ const AnimatedInput = ({
   defaultValue,
   onChangeText,
   keyboardType,
-  editable
+  editable,
+  bordered
 }) => {
   const labelAnimation = useRef(new Animated.Value(0)).current;
-  const onFocus = e => {
+  const [value, setValue] = useState('');
+  const onFocus = (e) => {
     Animated.spring(labelAnimation, {
       toValue: 1,
       useNativeDriver: false,
     }).start();
   };
   const onBlur = () => {
-    Animated.spring(labelAnimation, {
-      toValue: 0,
-      useNativeDriver: false,
-    }).start();
+    if (!value.length) {
+      Animated.spring(labelAnimation, {
+        toValue: 0,
+        useNativeDriver: false,
+      }).start();
+    }
   };
 
   return (
-    <View style={styles.inputContainer}>
+    <View style={{...styles.inputContainer, borderBottomWidth: bordered ? 2 : 0}}>
       <Animated.Text
         onPress={onFocus}
         style={[
@@ -48,7 +52,10 @@ const AnimatedInput = ({
           style={[styles.input]}
           autoCapitalize="none"
           defaultValue={defaultValue}
-          onChangeText={onChangeText}
+          onChangeText={e => {
+            onChangeText(e);
+            setValue(e);
+          }}
           keyboardType={keyboardType}
           editable={editable}
           onFocus={onFocus}
