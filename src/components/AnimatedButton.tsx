@@ -48,8 +48,8 @@ const AnimatedButton = ({onPress}) => {
   const sourceFile = require('../assets/typing.json');
 
   const buttonTextRenderer = () => {
-    return animationProgress === 0 ? (
-      <Text>PROCEED TO PAYMENT</Text>
+    return animationProgress !== 1 ? (
+      <Text style={{color: '#FFF', fontWeight: '700'}}>PROCEED TO PAYMENT</Text>
     ) : (
       <LottieView source={sourceFile} progress={buttonAnimation} />
     );
