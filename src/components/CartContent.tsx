@@ -4,6 +4,7 @@ import AppContext from '../components/AppContext';
 import CartItemCard from '../components/CartItemCard';
 import PriceDetails from './PriceDetails';
 import OrderConfirmation from './OrderConfirmation';
+import OrderConfirmationWithAnimation from '../components/OrderConfirmationWithAnimation';
 import {FlatList, Text, TouchableOpacity, View} from 'react-native';
 
 const CartContent = ({navigation}) => {
@@ -36,7 +37,7 @@ const CartContent = ({navigation}) => {
       </View>
     </View>
   ) : (
-    <OrderConfirmation navigation={navigation} />
+    <OrderConfirmationWithAnimation navigation={navigation} />
   );
 };
 

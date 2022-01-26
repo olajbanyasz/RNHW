@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {Header} from 'react-native-elements';
 import styles from '../../style/stylesheet';
 import ItemCard from '../../components/ItemCard';
+import AnimatedInput from '../../components/AnimatedInput';
 
 const Home = ({navigation}) => {
   const [data, setData] = useState([]);
@@ -59,13 +60,14 @@ const Home = ({navigation}) => {
           />
         }
       />
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          onChangeText={text => console.log(text)}
-          placeholder={'Enter Search Term'}
-        />
-      </View>
+      <AnimatedInput
+        label={'Enter Search Term'}
+        defaultValue={''}
+        onChangeText={() => {}}
+        keyboardType={'default'}
+        editable={true}
+        placeholder={'eg: black sweatshirt'}
+      />
       <View style={styles.mainContainer}>
         <FlatList
           style={styles.flatList}

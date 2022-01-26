@@ -20,14 +20,22 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
     borderBottomWidth: 2,
     borderBottomColor: 'lightgray',
+    height: 80,
   },
   input: {
     borderColor: 'lightgray',
     borderWidth: 2,
     borderRadius: 5,
-    height: 40,
     padding: 10,
     margin: 20,
+  },
+  inputLabel: {
+    color: 'grey',
+    position: 'absolute',
+    left: 30,
+    zIndex: 1,
+    backgroundColor: '#FFF',
+    paddingHorizontal: 5,
   },
   flatList: {
     backgroundColor: '#FFF',
