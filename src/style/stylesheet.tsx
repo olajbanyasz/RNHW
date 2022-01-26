@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     color: 'grey',
     position: 'absolute',
     left: 30,
-    zIndex: 200,
+    zIndex: 1,
     backgroundColor: '#FFF',
     paddingHorizontal: 5,
   },
