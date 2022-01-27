@@ -4,10 +4,11 @@ import {Text, TouchableOpacity, View, Modal, Pressable} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../style/stylesheet';
 import AppContext from './AppContext';
+import {storeProfile, emptyData} from '../helpers';
 
 const LogoutModal = () => {
   const [isModalVisible, setModalVisible] = useState(false);
-  const {isUser, setUser} = useContext(AppContext);
+  const {isUser, setUser, setUserData} = useContext(AppContext);
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
@@ -41,14 +42,17 @@ const LogoutModal = () => {
                   CANCEL
                 </Text>
               </Pressable>
-              <Pressable
-                style={styles.loginButtons}
-                onPress={() => {
-                  setUser(false);
-                  toggleModal();
-                }}>
-                <Text style={styles.loginButtonText}>LOGOUT</Text>
-              </Pressable>
+              
+                <Pressable
+                  style={styles.loginButtons}
+                  onPress={() => {
+                    setUser(false);
+                    setUserData(emptyData);
+                    toggleModal();
+                  }}>
+                  <Text style={styles.loginButtonText}>LOGOUT</Text>
+                </Pressable>
+              
             </View>
           </View>
         </View>

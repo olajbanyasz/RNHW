@@ -7,6 +7,17 @@ const AppContext = React.createContext({
   },
   isUser: false,
   setUser: (user: any) => user,
+  userData: {
+    name: '',
+    number: '',
+    street: '',
+    house: '',
+    city: '',
+    profilePics: '',
+  },
+  setUserData: (data: any) => {
+    userData = data;
+  },
 });
 
 export default AppContext;

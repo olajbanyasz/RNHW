@@ -67,6 +67,7 @@ const Home = ({navigation}) => {
         keyboardType={'default'}
         editable={true}
         bordered={true}
+        isAnimated={true}
       />
       <View style={styles.mainContainer}>
         <FlatList

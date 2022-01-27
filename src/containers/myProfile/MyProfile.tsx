@@ -7,41 +7,64 @@ import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import AppContext from '../../components/AppContext';
 import AnimatedInput from '../../components/AnimatedInput';
 import LogoutModal from '../../components/LogoutModal';
-import {launchImageLibrary} from 'react-native-image-picker';
+import {
+  ImagePickerResponse,
+  launchImageLibrary,
+} from 'react-native-image-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Avatar} from 'react-native-elements';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 const MyProfile = ({navigation}) => {
-  const {cart, isUser, setUser} = useContext(AppContext);
+  const {cart, isUser, setUser, userData, setUserData} = useContext(AppContext);
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const [city, setCity] = useState('');
   const [street, setStreet] = useState('');
   const [house, setHouse] = useState('');
-  const [asset, setAsset] = useState({uri: ''});
+  const [profilePics, setProfilePics] = useState(
+    'https://uifaces.co/our-content/donated/6MWH9Xi_.jpg',
+  );
 
-  const getProfilePics = async () => {
-    if (Math.random() > 0.5) {
-      await AsyncStorage.setItem(
-        'profilePics',
-        'https://randomuser.me/api/portraits/women/64.jpg',
-      );
-    } else {
-      await AsyncStorage.setItem(
-        'profilePics',
-        'https://randomuser.me/api/portraits/men/39.jpg',
-      );
-    }
+  const storeUserData = data => {
+    setName(data.name);
+    setNumber(data.number);
+    setCity(data.city);
+    setStreet(data.street);
+    setHouse(data.house);
+    setProfilePics(data.profilePics);
+  };
+
+  const updateUserData = () => {
+    const newUserData = {name, number, street, house, city, profilePics};
+    setUserData(newUserData);
+  };
+
+  const getStoredDtata = async () => {
     try {
-      const value = await AsyncStorage.getItem('profilePics');
-      setAsset({uri: value ? value : ''});
+      const _profilePics = await AsyncStorage.getItem('profilePics');
+      const _name = await AsyncStorage.getItem('name');
+      const _number = await AsyncStorage.getItem('number');
+      const _city = await AsyncStorage.getItem('city');
+      const _street = await AsyncStorage.getItem('street');
+      const _house = await AsyncStorage.getItem('house');
+      const data = {
+        name: _name,
+        number: _number,
+        city: _city,
+        street: _street,
+        house: _house,
+        profilePics: _profilePics,
+      };
+      if (isUser) {
+        storeUserData(data);
+      }
     } catch (error) {
       console.log('error', error);
     }
   };
 
-  const setProfilePics = async picture => {
+  const storeProfilePics = async (picture: string | ImagePickerResponse) => {
     try {
       await AsyncStorage.setItem('profilePics', picture);
     } catch (error) {
@@ -49,11 +72,8 @@ const MyProfile = ({navigation}) => {
     }
   };
 
-  useEffect(() => {
-    getProfilePics();
-  }, []);
-
   const pickImageHandler = () => {
+    console.log('00000', userData);
     launchImageLibrary(
       {
         selectionLimit: 0,
@@ -66,15 +86,12 @@ const MyProfile = ({navigation}) => {
         } else if (response.errorCode) {
           console.log('Error: ', response.errorMessage);
         } else {
-          setAsset(response);
-          setProfilePics(response);
+          setProfilePics(response.assets ? response.assets[0].uri : '');
+          storeProfilePics(response.assets ? response.assets[0].uri : '');
         }
       },
     );
   };
-
-  const defaultUri = 'https://randomuser.me/api/portraits/men/39.jpg';
-  const profilePicsUri = asset.uri || defaultUri;
 
   return (
     <SafeAreaView>
@@ -92,7 +109,7 @@ const MyProfile = ({navigation}) => {
         />
         <AnimatedInput
           label={'Full Name'}
-          defaultValue={''}
+          defaultValue={userData.name}
           onChangeText={(e: React.SetStateAction<string>) => setName(e)}
           keyboardType={'default'}
           editable={true}
@@ -102,13 +119,13 @@ const MyProfile = ({navigation}) => {
           <Avatar
             size="xlarge"
             rounded
-            source={{uri: profilePicsUri}}
+            source={{uri: userData.profilePics}}
             onPress={pickImageHandler}
           />
         </View>
         <AnimatedInput
           label={'Mobile Number'}
-          defaultValue={''}
+          defaultValue={userData.number}
           onChangeText={(e: React.SetStateAction<string>) => setNumber(e)}
           keyboardType={'default'}
           editable={true}
@@ -116,7 +133,7 @@ const MyProfile = ({navigation}) => {
         />
         <AnimatedInput
           label={'City'}
-          defaultValue={''}
+          defaultValue={userData.city}
           onChangeText={(e: React.SetStateAction<string>) => setCity(e)}
           keyboardType={'default'}
           editable={true}
@@ -124,7 +141,7 @@ const MyProfile = ({navigation}) => {
         />
         <AnimatedInput
           label={'Locality, area or street'}
-          defaultValue={''}
+          defaultValue={userData.street}
           onChangeText={(e: React.SetStateAction<string>) => setStreet(e)}
           keyboardType={'default'}
           editable={true}
@@ -132,19 +149,21 @@ const MyProfile = ({navigation}) => {
         />
         <AnimatedInput
           label={'Flat no., building name'}
-          defaultValue={''}
+          defaultValue={userData.house}
           onChangeText={(e: React.SetStateAction<string>) => setHouse(e)}
           keyboardType={'default'}
           editable={true}
           bordered={false}
         />
-        <TouchableOpacity
-          onPress={() => setUser(true)}
-          activeOpacity={0.3}
-          style={{...styles.cartButton, paddingHorizontal: 20}}>
-          <Text style={styles.cartButtonText}>UPDATE</Text>
-        </TouchableOpacity>
-        <LogoutModal />
+        {isUser && (
+          <TouchableOpacity
+            onPress={updateUserData}
+            activeOpacity={0.3}
+            style={{...styles.cartButton, paddingHorizontal: 20}}>
+            <Text style={styles.cartButtonText}>UPDATE</Text>
+          </TouchableOpacity>
+        )}
+        {isUser && <LogoutModal />}
       </ScrollView>
     </SafeAreaView>
   );
