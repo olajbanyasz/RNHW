@@ -113,6 +113,7 @@ const MyProfile = ({navigation}) => {
         } else {
           setProfilePics(response.assets ? response.assets[0].uri : '');
           storeProfilePics(response.assets ? response.assets[0].uri : '');
+          onChangeHandler('profilePics');
         }
       },
     );
