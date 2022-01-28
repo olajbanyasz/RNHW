@@ -25,18 +25,43 @@ const MyProfile = ({navigation}) => {
   const [profilePics, setProfilePics] = useState(
     'https://uifaces.co/our-content/donated/6MWH9Xi_.jpg',
   );
+  const [changedAttributes, setAttributes] = useState<Array<string>>([]);
 
-  const storeUserData = data => {
+  const onChangeHandler = (attributeName: string) => {
+    if (changedAttributes.indexOf(attributeName) === -1) {
+      const newAttributes = [...changedAttributes];
+      newAttributes.push(attributeName);
+      setAttributes(newAttributes);
+    }
+  };
+
+  function storeUserData(data: {
+    name: any;
+    number: any;
+    city: any;
+    street: any;
+    house: any;
+    profilePics: any;
+  }) {
     setName(data.name);
     setNumber(data.number);
     setCity(data.city);
     setStreet(data.street);
     setHouse(data.house);
     setProfilePics(data.profilePics);
-  };
+  }
 
   const updateUserData = () => {
-    const newUserData = {name, number, street, house, city, profilePics};
+    const newUserData = {
+      name: changedAttributes.includes('name') ? name : userData.name,
+      number: changedAttributes.includes('number') ? number : userData.number,
+      street: changedAttributes.includes('street') ? street : userData.street,
+      house: changedAttributes.includes('house') ? house : userData.house,
+      city: changedAttributes.includes('city') ? city : userData.city,
+      profilePics: changedAttributes.includes('profilePics')
+        ? profilePics
+        : userData.profilePics,
+    };
     setUserData(newUserData);
   };
 
@@ -110,10 +135,14 @@ const MyProfile = ({navigation}) => {
         <AnimatedInput
           label={'Full Name'}
           defaultValue={userData.name}
-          onChangeText={(e: React.SetStateAction<string>) => setName(e)}
+          onChangeText={(e: React.SetStateAction<string>) => {
+            setName(e);
+            onChangeHandler('name');
+          }}
           keyboardType={'default'}
           editable={true}
           bordered={false}
+          isAnimated={false}
         />
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
           <Avatar
@@ -126,36 +155,52 @@ const MyProfile = ({navigation}) => {
         <AnimatedInput
           label={'Mobile Number'}
           defaultValue={userData.number}
-          onChangeText={(e: React.SetStateAction<string>) => setNumber(e)}
+          onChangeText={(e: React.SetStateAction<string>) => {
+            setNumber(e);
+            onChangeHandler('number');
+          }}
           keyboardType={'default'}
           editable={true}
           bordered={false}
+          isAnimated={false}
         />
         <AnimatedInput
           label={'City'}
           defaultValue={userData.city}
-          onChangeText={(e: React.SetStateAction<string>) => setCity(e)}
+          onChangeText={(e: React.SetStateAction<string>) => {
+            setCity(e);
+            onChangeHandler('city');
+          }}
           keyboardType={'default'}
           editable={true}
           bordered={false}
+          isAnimated={false}
         />
         <AnimatedInput
           label={'Locality, area or street'}
           defaultValue={userData.street}
-          onChangeText={(e: React.SetStateAction<string>) => setStreet(e)}
+          onChangeText={(e: React.SetStateAction<string>) => {
+            setStreet(e);
+            onChangeHandler('street');
+          }}
           keyboardType={'default'}
           editable={true}
           bordered={false}
+          isAnimated={false}
         />
         <AnimatedInput
           label={'Flat no., building name'}
           defaultValue={userData.house}
-          onChangeText={(e: React.SetStateAction<string>) => setHouse(e)}
+          onChangeText={(e: React.SetStateAction<string>) => {
+            setHouse(e);
+            onChangeHandler('house');
+          }}
           keyboardType={'default'}
           editable={true}
           bordered={false}
+          isAnimated={false}
         />
-        {isUser && (
+        {isUser && !!changedAttributes.length && (
           <TouchableOpacity
             onPress={updateUserData}
             activeOpacity={0.3}
