@@ -4,9 +4,10 @@ import {Text, View, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../style/stylesheet';
 import AppContext from '../components/AppContext';
+import {defaultData} from '../helpers';
 
 const LoginFirst = ({navigation}) => {
-  const {setUser} = useContext(AppContext);
+  const {setUser, setUserData, userData} = useContext(AppContext);
   return (
     <View style={{backgroundColor: '#FFF', marginTop: '30%'}}>
       <View style={{padding: 20, alignItems: 'center'}}>
@@ -23,7 +24,10 @@ const LoginFirst = ({navigation}) => {
           Login first to view your cart
         </Text>
         <TouchableOpacity
-          onPress={() => setUser(true)}
+          onPress={() => {
+            setUser(true);
+            setUserData(defaultData);
+          }}
           activeOpacity={0.3}
           style={styles.cartButton}>
           <Text style={styles.cartButtonText}>LOGIN NOW</Text>

@@ -1,5 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState, useContext} from 'react';
+import {storeProfile, defaultData} from '../helpers';
 import {
   Text,
   TouchableOpacity,
@@ -14,7 +15,8 @@ import AppContext from './AppContext';
 
 function CartModal({isColorSelected, item}) {
   const [isModalVisible, setModalVisible] = useState(false);
-  const {cart, updateCart, isUser, setUser} = useContext(AppContext);
+  const {cart, updateCart, isUser, setUser, setUserData} =
+    useContext(AppContext);
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -63,6 +65,7 @@ function CartModal({isColorSelected, item}) {
                 style={styles.loginButtons}
                 onPress={() => {
                   setUser(true);
+                  setUserData(defaultData);
                 }}>
                 <Text style={styles.loginButtonText}>LOGIN</Text>
               </Pressable>
@@ -70,6 +73,7 @@ function CartModal({isColorSelected, item}) {
                 style={styles.loginButtons}
                 onPress={() => {
                   setUser(true);
+                  setUserData(defaultData);
                 }}>
                 <Text style={styles.loginButtonText}>SIGN UP</Text>
               </Pressable>

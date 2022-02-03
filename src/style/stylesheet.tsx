@@ -18,7 +18,6 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     backgroundColor: '#FFF',
-    borderBottomWidth: 2,
     borderBottomColor: 'lightgray',
     height: 80,
   },
